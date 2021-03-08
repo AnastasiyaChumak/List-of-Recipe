@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/main_layout}">
+<head>
+<meta charset="UTF-8">
+<title>List of recipes</title>
+</head>
+<body style="background: pink;">
+	<div layout:fragment="content" class="container mySpace">
+	<h2>List of recipes:</h2>
+	<h3><a href="/addRecipe">Add recipe</a></h3>
+	<form action="/" class="form-inline">
+			<div class="form-group mb-2">
+				<input type="text" class="form-control" name="name"
+					placeholder="Search recipe" /> <input type="submit" value="Search"
+					class="btn btn-primary" />
+			</div>
+		</form>
+		<div class="card">
+			<div class="card card-body">
+				<ul th:each="recipe:${recipes}"
+					style="list-style: none; padding-left: 10px;">
+					<li><b>Name:</b> <span th:text="${recipe.name}"></span></li>
+					<li><b>Text: </b> <span th:text="${recipe.text}"></span></li>
+					<hr>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
